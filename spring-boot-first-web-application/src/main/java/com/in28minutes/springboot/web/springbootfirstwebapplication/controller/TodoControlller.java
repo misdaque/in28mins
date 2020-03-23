@@ -8,29 +8,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.in28minutes.springboot.web.springbootfirstwebapplication.service.LoginService;
+import com.in28minutes.springboot.web.springbootfirstwebapplication.service.TodoService;
 
 @Controller
-public class LoginControlller {
+public class TodoControlller {
 
 	@Autowired
-	LoginService service;
+	TodoService service;
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/list-todos", method = RequestMethod.GET)
 	public String showLooginPage(ModelMap model) {
-		return "login";
-	}
-
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String showWelcomePage(ModelMap model, @RequestParam String name, @RequestParam String password) {
-
-		if (!service.isValidUser(name, password)) {
-			model.put("errorMessage", "Invalid Credentials");
-			return "login";
-		}
-
-		model.put("name", name);
-		model.put("password", password);
-		return "welcome";
+		model.put("todos", service.retrieveTodos("in28Minutes"));
+		return "list-todos";
 	}
 
 }
