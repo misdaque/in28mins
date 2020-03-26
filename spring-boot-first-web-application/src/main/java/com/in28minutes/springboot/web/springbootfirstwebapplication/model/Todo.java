@@ -8,15 +8,15 @@ public class Todo {
 	private String user;
 	private String desc;
 	private Date targetDate;
-	private boolean isDone;
+	private boolean done;
 
-	public Todo(int id, String user, String desc, Date targetDate, boolean isDone) {
+	public Todo(int id, String user, String desc, Date targetDate, boolean done) {
 		super();
 		this.id = id;
 		this.user = user;
 		this.desc = desc;
 		this.targetDate = targetDate;
-		this.isDone = isDone;
+		this.done = done;
 	}
 
 	public int getId() {
@@ -52,11 +52,11 @@ public class Todo {
 	}
 
 	public boolean isDone() {
-		return isDone;
+		return done;
 	}
 
-	public void setDone(boolean isDone) {
-		this.isDone = isDone;
+	public void setDone(boolean done) {
+		this.done = done;
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class Todo {
 	@Override
 	public String toString() {
 		return String.format("Todo [id = %s user=%s, desc=%s, targetDate=%s, isDone=%s]", id, user, desc, targetDate,
-				isDone);
+				done);
 	}
 
 }
