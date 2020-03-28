@@ -2,14 +2,23 @@ package com.in28minutes.springboot.web.springbootfirstwebapplication.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.Size;
+
 public class Todo {
 
 	private int id;
 	private String user;
+	
+	@Size(min = 5 , message = "Enter at least 5 character")
 	private String desc;
 	private Date targetDate;
 	private boolean done;
-
+	
+	
+	public Todo() {
+		super();
+	}
+	
 	public Todo(int id, String user, String desc, Date targetDate, boolean done) {
 		super();
 		this.id = id;
