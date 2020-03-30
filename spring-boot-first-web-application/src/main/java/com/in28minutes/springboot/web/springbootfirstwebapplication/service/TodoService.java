@@ -30,6 +30,15 @@ public class TodoService {
 		}
 		return filteredTodos;
 	}
+	
+	public Todo retrieveTodo(int id) {
+
+		for (Todo todo : todos) {
+			if (todo.getId()==id)
+				return todo;
+		}
+		return null;
+	}
 
 	public void addTodo(String name, String desc, Date targetDate, boolean done) {
 		todos.add(new Todo(++todoCount, name, desc, targetDate, done));
@@ -43,6 +52,11 @@ public class TodoService {
 			if (todo.getId() == id)
 				iterator.remove();
 		}
+	}
+	
+	public void updateTodo(Todo todo) {
+		todos.remove(todo);
+		todos.add(todo);
 	}
 
 }
